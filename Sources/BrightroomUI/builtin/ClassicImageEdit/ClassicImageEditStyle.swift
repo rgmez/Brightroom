@@ -23,23 +23,32 @@ import UIKit
 
 public struct ClassicImageEditStyle: Sendable {
 
-  public static let `default` = ClassicImageEditStyle()
+    public static let `default` = ClassicImageEditStyle()
 
-  public struct Control: Sendable {
+    public struct Control: Sendable {
+        public var backgroundColor: UIColor
 
-    public var backgroundColor = UIColor(white: 0.98, alpha: 1)
+        public init() {
+            backgroundColor = UIColor { traitCollection in
+                return switch traitCollection.userInterfaceStyle {
+                case .dark: UIColor(white: 0.12, alpha: 1.0)
+                default: UIColor(white: 0.98, alpha: 1.0)
+                }
+            }
+        }
+    }
+
+    public var control: Control
+    public var black: UIColor
 
     public init() {
+        control = Control()
 
+        black = UIColor { traitCollection in
+            return switch traitCollection.userInterfaceStyle {
+            case .dark: UIColor(white: 0.9, alpha: 1.0)
+            default: UIColor(white: 0.05, alpha: 1.0)
+            }
+        }
     }
-  }
-
-  public var control = Control()
-  
-  public var black = UIColor(white: 0.05, alpha: 1)
-
-  public init() {
-
-  }
-
 }
