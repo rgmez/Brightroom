@@ -209,7 +209,7 @@ public final class ClassicImageEditViewController: UIViewController {
           guide.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
           guide.rightAnchor.constraint(equalTo: view.rightAnchor),
           guide.leftAnchor.constraint(equalTo: view.leftAnchor),
-          guide.widthAnchor.constraint(equalTo: guide.heightAnchor, multiplier: 1),
+          guide.bottomAnchor.constraint(equalTo: controlContainerView.topAnchor),
 
           {
             let c = editContainerView.topAnchor.constraint(equalTo: guide.topAnchor)
